@@ -1,31 +1,32 @@
 package main
 
 import (
-	"fmt"
+	//"fmt"
 	"os"
+
+	"github.com/01-edu/z01"
 )
 
 func Wdmatch(s1, s2 string) {
-	if len(os.Args) != 3 {
-		return
-	}
-
-	i, j := os.Args[1], os.Args[2]
 	index := 0
 
-	for _, char := range j {
-		if index < len(i) && string(char) == string(i[index]) {
+	for _, char := range s2 {
+		if index < len(s1) && char == rune(s1[index]) {
 			index++
 		}
 	}
 
-	if index == len(i) {
-		fmt.Println(i)
+	if index == len(s1) {
+		for _, char := range s1 {
+			z01.PrintRune(char)
+		}
+		z01.PrintRune('\n')
 	}
 }
 
 func main() {
-	if len(os.Args) == 3 {
-		Wdmatch(os.Args[1], os.Args[2])
+	if len(os.Args) != 3 {
+		return
 	}
+	Wdmatch(os.Args[1], os.Args[2])
 }
